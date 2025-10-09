@@ -1,9 +1,9 @@
 import type React from "react";
 import type { Metadata } from "next";
-import { Suspense } from "react";
 import "./globals.css";
-import Providers from "@/lib/core/providers/providers";
 import { WebVitals } from "@/components/atoms/webVitals";
+import Header from "@/components/organisms/header/header";
+import Footer from "@/components/organisms/footer/footer";
 
 export const metadata: Metadata = {
   title: "Koala Blockchain - Crypto Tracker",
@@ -20,7 +20,9 @@ export default function RootLayout({
     <html lang="en" className="dark">
       <body>
         <WebVitals />
+        <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );
