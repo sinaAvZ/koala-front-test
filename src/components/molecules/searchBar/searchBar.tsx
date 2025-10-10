@@ -1,7 +1,7 @@
 "use client";
 
 import { Search } from "lucide-react";
-import { Input } from "@/components/atoms/input";
+import { Input } from "@/components/atoms";
 import { useState, useEffect } from "react";
 import { useDebounce } from "@/lib/hooks/useDeounce";
 

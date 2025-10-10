@@ -1,24 +1,22 @@
-"use client";
+import HomePopularList from "@/components/organisms/homePopularList/homePopularList";
+import { getMarketData } from "@/lib/dataLayer/queries/use24HourChangesMarket";
+import { HydrationBoundary, QueryClient, dehydrate } from "@tanstack/react-query";
 
-import { useState } from "react";
-import { TrendingUp } from "lucide-react";
-import PriceCard from "@/components/molecules/priceCard/priceCard";
-import SearchBar from "@/components/molecules/searchBar/searchBar";
-import TradingLists from "@/components/templates/home/tradingLists";
+export default async function TradingListsPage() {
+  const queryClient = new QueryClient();
 
-interface PriceData {
-  [symbol: string]: {
-    price: string;
-    priceChangePercent: string;
-  };
-}
+  await queryClient.prefetchQuery({
+    queryKey: ["marketData"],
+    queryFn: getMarketData,
+  });
 
-export default function HomePage() {
   return (
-    <div className="min-h-screen bg-background">
-      <main className="container mx-auto px-4 py-8">
-        <TradingLists />
-      </main>
-    </div>
+    <HydrationBoundary state={dehydrate(queryClient)}>
+      <div className="min-h-screen bg-background">
+        <main className="container mx-auto px-4 py-8">
+          <HomePopularList />
+        </main>
+      </div>
+    </HydrationBoundary>
   );
 }

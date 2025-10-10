@@ -6,9 +6,8 @@ const meta: Meta<typeof PriceCard> = {
   component: PriceCard,
   tags: ["autodocs"],
   argTypes: {
-    onViewTrades: { action: "view trades clicked" },
-    onAddToWatchList: { action: "add to watchlist clicked" },
-    onRemoveFromWatchList: { action: "remove from watchlist clicked" },
+    onAddToWatchList: { action: "add to watch list clicked" },
+    onRemoveFromWatchList: { action: "remove from watch list clicked" },
   },
 };
 

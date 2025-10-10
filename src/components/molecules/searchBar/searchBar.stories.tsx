@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { useState } from "react";
 import SearchBar from "./searchBar";
 
 const meta: Meta<typeof SearchBar> = {

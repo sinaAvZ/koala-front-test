@@ -1,16 +1,15 @@
 "use client";
 
 import { TrendingUp, TrendingDown } from "lucide-react";
-import { Card } from "@/components/atoms/card";
+import { Card } from "@/components/atoms";
 import { cn } from "@/lib/utils";
-import { Button } from "../../atoms/button";
 import Link from "next/link";
+import { Button } from "@/components/atoms";
 
 interface PriceCardProps {
   symbol: string;
   price: string;
   priceChangePercent: string;
-  onViewTrades?: () => void;
   onAddToWatchList?: () => void;
   onRemoveFromWatchList?: () => void;
   isInWatchList?: boolean;
@@ -21,7 +20,6 @@ export default function PriceCard({
   symbol,
   price,
   priceChangePercent,
-  onViewTrades,
   onAddToWatchList,
   onRemoveFromWatchList,
   isInWatchList,
@@ -58,26 +56,15 @@ export default function PriceCard({
 
         {showActions && (
           <div className="flex flex-col gap-2">
-            <Link
-              href={`symbol/${symbol}`}
-              className="px-4 py-2 bg-primary text-primary-foreground rounded-lg text-sm font-medium hover:bg-primary/90 transition-colors whitespace-nowrap"
-            >
-              View Trades
-            </Link>
+            <Button variant={"outline"} asChild>
+              <Link href={`/trades/${symbol}`}>View Trades</Link>
+            </Button>
             {isInWatchList ? (
-              <Button
-                onClick={onRemoveFromWatchList}
-                className="px-4 py-2 bg-destructive/20 text-destructive rounded-lg text-sm font-medium hover:bg-destructive/30 transition-colors whitespace-nowrap"
-              >
+              <Button onClick={onRemoveFromWatchList} variant={"destructive"}>
                 Remove
               </Button>
             ) : (
-              <Button
-                onClick={onAddToWatchList}
-                className="px-4 py-2 bg-secondary text-secondary-foreground rounded-lg text-sm font-medium hover:bg-secondary/80 transition-colors whitespace-nowrap"
-              >
-                Add to Watch
-              </Button>
+              <Button onClick={onAddToWatchList}>Add to Watch</Button>
             )}
           </div>
         )}

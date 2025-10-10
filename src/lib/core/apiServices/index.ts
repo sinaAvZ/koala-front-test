@@ -1,19 +1,13 @@
 import api from "../axiosInstance";
 import { toast } from "sonner";
 
-interface ApiResponse<T> {
-  data: T;
-  status: number;
-  message?: string;
-}
-
 export async function getData<T>(
   url: string,
   params?: Record<string, unknown>,
   config?: Record<string, unknown>,
   signal?: AbortSignal
-): Promise<ApiResponse<T>> {
-  const response = await api.get<ApiResponse<T>>(url, { params, ...config, signal });
+): Promise<T> {
+  const response = await api.get<T>(url, { params, ...config, signal });
   return response.data;
 }
 
