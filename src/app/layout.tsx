@@ -4,6 +4,7 @@ import "./globals.css";
 import { WebVitals } from "@/components/atoms/webVitals";
 import Header from "@/components/organisms/header/header";
 import Footer from "@/components/organisms/footer/footer";
+import Providers from "@/lib/core/providers/providers";
 
 export const metadata: Metadata = {
   title: "Koala Blockchain - Crypto Tracker",
@@ -19,10 +20,13 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body>
-        <WebVitals />
-        <Header />
-        {children}
-        <Footer />
+        <Providers>
+          <WebVitals />
+          <Header />
+
+          {children}
+          <Footer />
+        </Providers>
       </body>
     </html>
   );

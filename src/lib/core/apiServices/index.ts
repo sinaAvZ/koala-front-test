@@ -24,6 +24,6 @@ export async function postData<T, P>(
   signal?: AbortSignal
 ): Promise<ApiResponse<T>> {
   const response = await api.post<ApiResponse<T>>(url, data, { ...config, signal });
-  toast.success("داده با موفقیت ارسال شد", { position: "top-right", duration: 3000 });
+  toast.success("request successfully sent", { position: "top-right", duration: 3000 });
   return response.data;
 }
